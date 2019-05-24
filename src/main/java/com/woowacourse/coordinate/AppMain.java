@@ -3,11 +3,9 @@ package com.woowacourse.coordinate;
 import com.woowacourse.coordinate.domain.Figure;
 import com.woowacourse.coordinate.domain.FigureCreator;
 import com.woowacourse.coordinate.domain.FigureFactory;
-import com.woowacourse.coordinate.domain.Point;
+import com.woowacourse.coordinate.domain.PointGroup;
 import com.woowacourse.coordinate.view.InputView;
 import com.woowacourse.coordinate.view.OutputView;
-
-import java.util.List;
 
 public class AppMain {
     public static void main(String[] args) {
@@ -29,7 +27,7 @@ public class AppMain {
     }
 
     private static void printPoints() {
-        List<Point> points = Point.createWithPair(InputView.inputCoordinate());
+        PointGroup points = PointGroup.ofString(InputView.inputCoordinate());
         FigureCreator figureCreator = new FigureFactory();
 
         Figure figure = figureCreator.create(points);

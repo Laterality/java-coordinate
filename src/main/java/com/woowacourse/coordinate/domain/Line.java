@@ -1,19 +1,18 @@
 package com.woowacourse.coordinate.domain;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Line extends Figure {
     public static final int NUM_OF_POINTS = 2;
 
-    public Line(List<Point> points) {
+    public Line(PointGroup points) {
         super(points, NUM_OF_POINTS);
         this.points = points;
     }
 
     @Override
     public double calculateArea() {
-        return points.get(0).calculateDistance(points.get(1));
+        return points.calculateDistance(0, 1);
     }
 
     @Override

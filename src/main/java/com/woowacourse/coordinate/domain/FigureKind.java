@@ -1,7 +1,6 @@
 package com.woowacourse.coordinate.domain;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -11,14 +10,14 @@ public enum FigureKind {
     SQUARE(Square.NUM_OF_POINTS, Square::new);
 
     private int numOfPoints;
-    private Function<List<Point>, Figure> mapper;
+    private Function<PointGroup, Figure> mapper;
 
-    FigureKind(int numOfPoints, Function<List<Point>, Figure> shapeMapper) {
+    FigureKind(int numOfPoints, Function<PointGroup, Figure> shapeMapper) {
         this.numOfPoints = numOfPoints;
         this.mapper = shapeMapper;
     }
 
-    public Figure mapToShape(List<Point> points) {
+    public Figure mapToShape(PointGroup points) {
         return mapper.apply(points);
     }
 

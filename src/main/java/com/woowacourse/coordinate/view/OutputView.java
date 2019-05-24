@@ -1,24 +1,17 @@
 package com.woowacourse.coordinate.view;
 
 import com.woowacourse.coordinate.domain.Line;
-import com.woowacourse.coordinate.domain.Point;
+import com.woowacourse.coordinate.domain.PointGroup;
 import com.woowacourse.coordinate.domain.Shape;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class OutputView {
 
-    public static void printCoordinate(List<Point> points) {
+    public static void printCoordinate(PointGroup points) {
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 24; i > 0; --i) {
-            final int currentY = i;
-            sb.append(getYAxisString(currentY));
-            List<Point> pointsToPrint = points.stream()
-                .filter(p -> p.matchY(currentY))
-                .collect(Collectors.toList());
-            printPoint(sb, pointsToPrint);
+        for (int y = 24; y > 0; --y) {
+            sb.append(getYAxisString(y));
+            appendX(sb, points, y);
             sb.append("\n");
         }
         printXAxis(sb);
@@ -33,15 +26,14 @@ public class OutputView {
         return "  |";
     }
 
-    private static void printPoint(StringBuilder sb, List<Point> pointsToPrint) {
-        for (int j = 0; j <= 24; ++j) {
-            sb.append(getPointString(pointsToPrint, j));
+    private static void appendX(StringBuilder sb, PointGroup points, int y) {
+        for (int x = 0; x <= 24; ++x) {
+            sb.append(getPointString(points.hasMatch(x, y)));
         }
     }
 
-    private static String getPointString(List<Point> pointsToPrint, int currentX) {
-        if (pointsToPrint.stream()
-            .anyMatch(p -> p.matchX(currentX))) {
+    private static String getPointString(boolean isPointExist) {
+        if (isPointExist) {
             return " ·";
         }
         return "  ";
