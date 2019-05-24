@@ -32,12 +32,11 @@ public class AppMain {
         List<Point> points = Point.createWithPair(InputView.inputCoordinate());
         FigureCreator figureCreator = new FigureFactory();
 
+        Figure figure = figureCreator.create(points);
+        OutputView.printCoordinate(points);
+
         if (points.size() != 1) {
-            Figure figure = figureCreator.create(points);
-            OutputView.printCoordinate(points);
             OutputView.printShape(figure);
         }
-
-        OutputView.printCoordinate(points);
     }
 }

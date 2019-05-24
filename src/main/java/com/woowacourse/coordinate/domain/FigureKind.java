@@ -22,7 +22,6 @@ public enum FigureKind {
         return mapper.apply(points);
     }
 
-
     public static FigureKind valueOf(int numOfPoints) {
         Optional<FigureKind> found = Arrays.stream(values())
             .filter(k -> k.numOfPoints == numOfPoints)
