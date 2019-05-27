@@ -5,6 +5,8 @@ import java.util.Objects;
 public class Square extends Figure {
     public static final int NUM_OF_POINTS = 4;
 
+    public static final String NAME = "사각형";
+
     public Square(PointGroup points) {
         super(points, NUM_OF_POINTS);
         checkIfSquare(points);
@@ -26,6 +28,11 @@ public class Square extends Figure {
     }
 
     @Override
+    public String getName() {
+        return NAME;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -44,7 +51,12 @@ public class Square extends Figure {
 
     @Override
     public String toString() {
-        return "사각형";
+        return new StringBuilder()
+            .append("Square { ")
+            .append("points: ")
+            .append(points)
+            .append(" }")
+            .toString();
     }
 
 }

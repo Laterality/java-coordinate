@@ -6,6 +6,8 @@ import java.util.Optional;
 public class Triangle extends Figure {
     public static final int NUM_OF_POINTS = 3;
 
+    private static final String NAME = "삼각형";
+
     private static final double COMPARE_OFFSET = 0.01;
 
     public Triangle(PointGroup points) {
@@ -26,7 +28,6 @@ public class Triangle extends Figure {
         if (!maybeSlope1.isPresent() && !maybeSlope2.isPresent()) {
             throw new IllegalArgumentException("삼각형을 만들 수 없는 좌표입니다.");
         }
-
     }
 
     private void throwIfSlopeEqual(double slope1, double slope2) {
@@ -67,6 +68,11 @@ public class Triangle extends Figure {
     }
 
     @Override
+    public String getName() {
+        return NAME;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -85,6 +91,11 @@ public class Triangle extends Figure {
 
     @Override
     public String toString() {
-        return "삼각형";
+        return new StringBuilder()
+            .append("Triangle { ")
+            .append("points: ")
+            .append(points)
+            .append(" }")
+            .toString();
     }
 }

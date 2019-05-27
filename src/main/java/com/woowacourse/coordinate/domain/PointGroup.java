@@ -114,4 +114,14 @@ public class PointGroup {
     public int hashCode() {
         return Objects.hash(points);
     }
+
+    @Override
+    public String toString() {
+        return new StringBuilder().append("PointGroup [ ")
+            .append(points.stream()
+                .map(Point::toString)
+                .collect(Collectors.joining(", ")))
+            .append(" ]")
+            .toString();
+    }
 }

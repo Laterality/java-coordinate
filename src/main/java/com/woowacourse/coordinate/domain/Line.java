@@ -5,6 +5,8 @@ import java.util.Objects;
 public class Line extends Figure {
     public static final int NUM_OF_POINTS = 2;
 
+    private static final String NAME = "직선";
+
     public Line(PointGroup points) {
         super(points, NUM_OF_POINTS);
         this.points = points;
@@ -13,6 +15,11 @@ public class Line extends Figure {
     @Override
     public double calculateArea() {
         return points.calculateDistance(0, 1);
+    }
+
+    @Override
+    public String getName() {
+        return NAME;
     }
 
     @Override
@@ -30,5 +37,15 @@ public class Line extends Figure {
     @Override
     public int hashCode() {
         return Objects.hash(points);
+    }
+
+    @Override
+    public String toString() {
+        return new StringBuilder()
+            .append("Square { ")
+            .append("points: ")
+            .append(points)
+            .append(" }")
+            .toString();
     }
 }

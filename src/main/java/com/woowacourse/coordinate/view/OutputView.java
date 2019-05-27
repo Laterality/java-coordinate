@@ -66,7 +66,7 @@ public class OutputView {
             printDistance(s.calculateArea());
             return;
         }
-        System.out.println(String.format("%s 넓이는 %.1f", s, s.calculateArea()));
+        System.out.println(String.format("%s 넓이는 %.1f", s.getName(), s.calculateArea()));
     }
 
     public static void printError(String msg) {

@@ -30,10 +30,10 @@ public class AppMain {
         PointGroup points = PointGroup.ofString(InputView.inputCoordinate());
         FigureCreator figureCreator = new FigureFactory();
 
-        Figure figure = figureCreator.create(points);
         OutputView.printCoordinate(points);
 
         if (points.size() != 1) {
+            Figure figure = figureCreator.create(points);
             OutputView.printShape(figure);
         }
     }
